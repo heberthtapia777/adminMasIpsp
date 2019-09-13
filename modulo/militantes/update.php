@@ -12,12 +12,12 @@
 	//$cargo = $op->toCargo($data->cargo);
 
 	$strQuery = "update militante set  ";
-	$strQuery .= "paterno = '".$data->paterno."', ";
-	$strQuery .= "materno = '".$data->materno."', ";
-	$strQuery .= "nombres = '".$data->name."', ";
-	$strQuery .= "nom_corto = '".$data->namec."', ";
+	$strQuery .= "paterno = upper('".$data->paterno."'), ";
+	$strQuery .= "materno = upper('".$data->materno."'), ";
+	$strQuery .= "nombres = upper('".$data->name."'), ";
+	$strQuery .= "nom_corto = upper('".$data->namec."'), ";
 	$strQuery .= "ci = '".$data->ci."', ";
-	$strQuery .= "cargo = '".$data->cargo."' ";
+	$strQuery .= "cargo = upper('".$data->cargo."') ";
 	$strQuery .= "where id = ".$data->id."; ";
 
 	$sql = $db->Execute($strQuery);

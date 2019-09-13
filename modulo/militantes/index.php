@@ -128,7 +128,7 @@
                   </thead>
                   <tbody>
                   <?PHP
-                  $sql = "SELECT * FROM militante ORDER BY id DESC limit 5; ";
+                  $sql = "SELECT * FROM militante ORDER BY id DESC; ";
 
                   $cont = 1;
 
@@ -159,11 +159,11 @@
                                   <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
                                   data-target="#dataUpdate"
                                       data-id     ="<?=$row['id']?>"
-                                      data-name     ="<?=$row['nombres']?>"
-                                      data-namec    ="<?=$row['nom_corto']?>"
-                                      data-paterno  ="<?=$row['paterno']?>"
-                                      data-materno    ="<?=$row['materno']?>"
-                                      data-cargo    ="<?=$row['cargo']?>"
+                                      data-name     ="<?=utf8_encode($row['nombres'])?>"
+                                      data-namec    ="<?=utf8_encode($row['nom_corto'])?>"
+                                      data-paterno  ="<?=utf8_encode($row['paterno'])?>"
+                                      data-materno  ="<?=utf8_encode($row['materno'])?>"
+                                      data-cargo    ="<?=utf8_encode($row['cargo'])?>"
                                       data-ci ="<?=$row['ci']?>"
                                   >
                                     <i class='fa fa-pencil-square-o '></i>

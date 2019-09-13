@@ -119,7 +119,7 @@
                       <th style="text-align: center">Nombre</th>
                       <th style="text-align: center">Nombre<br/>Corto</th>
                       <th style="text-align: center">Cedula<br/>Identidad</th>
-                      <th style="text-align: center">Fecha Nacimiento</th>
+                      <!-- <th style="text-align: center">Fecha Nacimiento</th> -->
                       <!--<th style="text-align: center">Edad</th>
                       <th style="text-align: center">Edad Tipo</th>-->
                       <th style="text-align: center">Cargo</th>
@@ -128,7 +128,7 @@
                   </thead>
                   <tbody>
                   <?PHP
-                  $sql = "SELECT * FROM militante ORDER BY id DESC; ";
+                  $sql = "SELECT * FROM militante ORDER BY id DESC ";
 
                   $cont = 1;
 
@@ -140,19 +140,22 @@
 
                       ?>
                       <tr id="tb<?=$row[0]?>">
-                          <!--<td align="center"><?=$cont++;?></td>-->
-                          <td align="center"><?=$row['id'];?></td>
+                          <td align="center"><?=$cont++;?></td>
+                          <!-- <td align="center"><?=$row['id'];?></td> -->
                           <td align="center"><?=utf8_encode($row['paterno']);?></td>
                           <td align="center"><?=utf8_encode($row['materno']);?></td>
                           <td align="center"><?=utf8_encode($row['nombres']);?></td>
                           <td align="center"><?=utf8_encode($row['nom_corto']);?></td>
                           <td align="center"><?=$row['ci'];?></td>
-                          <td align="center"><?=$row['fecha_nacimiento'];?></td>
+                          <!-- <td align="center"><?=$row['fecha_nacimiento'];?></td> -->
                           <!--<td align="center"><?=$row['edad_tipo'];?></td>-->
                           <td align="center"><?=utf8_encode($row['cargo']);?></td>
                           <td width="14%">
-                              <div class="btn-group" style="width: 171px">
-                                  <a class="btn btn-primary" href="credencial.php?name=<?=utf8_encode($row['nombres']).' '.utf8_encode($row['paterno']).' '.utf8_encode($row['materno']);?>&ci=<?=$row['ci']?>&ca=<?=utf8_encode($row['cargo'])?>" target="_blank" role="button">Ver Credencial</a>
+                              <div style="margin-bottom: 5px" >
+                                  <a class="btn btn-primary" href="credencial.php?name=<?=utf8_encode($row['nombres']).' '.utf8_encode($row['paterno']).' '.utf8_encode($row['materno']);?>&ci=<?=$row['ci']?>&ca=<?=utf8_encode($row['cargo'])?>" target="_blank" role="button">Ver Credencial 1</a>
+                              </div>
+                              <div style="margin-bottom: 5px" >
+                                  <a class="btn btn-info" href="credencial1.php?name=<?=utf8_encode($row['nombres']).' '.utf8_encode($row['paterno']).' '.utf8_encode($row['materno']);?>&ci=<?=$row['ci']?>&ca=<?=utf8_encode($row['cargo'])?>" target="_blank" role="button">Ver Credencial 2</a>
                               </div>
 
                               <div class="btn-group">
@@ -184,7 +187,7 @@
                       <th>Nombre</th>
                       <th>Nombre<br/>Corto</th>
                       <th>CI</th>
-                      <th>Fecha Nacimiento</th>
+                      <!-- <th>Fecha Nacimiento</th> -->
                       <!--<th>Edad</th>
                       <th>Edad Tipo</th>-->
                       <th>Cargo</th>

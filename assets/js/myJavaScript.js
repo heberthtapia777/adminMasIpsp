@@ -131,7 +131,7 @@ function displaySection(p, sec, id){
 					});
 				});
 			}
-			if(data.tabla === 'repuesto'){
+			if(data.tabla === 'militante'){
 				//fnClickAddRowU(data,true);
 				$('#datos_ajax').html('<div class="alert alert-success" role="alert"><strong>Guardado Correctamente!!!</strong></div><br>').fadeIn(4000,function () {
 					$('#datos_ajax').fadeOut(2000,function () {
@@ -235,6 +235,14 @@ function updateForm(idForm, p){
 				});
 			}
 			if(data.tabla === 'empleado'){
+				$('#datos_ajax_update').html('<div class="alert alert-success" role="alert"><strong>Modificado Correctamente!!!</strong></div><br>').fadeIn(4000,function () {
+					$('#datos_ajax_update').fadeOut(2000,function () {
+						$('#dataUpdate').modal('hide').delay(7000);
+						displaySection('listTabla.php','unseen');
+					});
+				});
+			}
+			if(data.tabla === 'militante'){
 				$('#datos_ajax_update').html('<div class="alert alert-success" role="alert"><strong>Modificado Correctamente!!!</strong></div><br>').fadeIn(4000,function () {
 					$('#datos_ajax_update').fadeOut(2000,function () {
 						$('#dataUpdate').modal('hide').delay(7000);

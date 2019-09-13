@@ -27,7 +27,7 @@ $strQuery = $db->Execute($sql);
 							<input id="fecha" name="fecha" type="text" class="form-control" value="<?=$fecha;?> <?=$hora;?>" disabled="disabled" />
 						</div>
 						<input id="date" name="date" type="hidden" value="<?=$fecha;?> <?=$hora;?>" />
-						<input id="tabla" name="tabla" type="hidden" value="repuesto">
+						<input id="tabla" name="tabla" type="hidden" value="militante">
 					</div>
 
 					<div class="form-group">

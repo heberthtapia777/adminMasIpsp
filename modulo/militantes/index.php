@@ -113,22 +113,22 @@
                 <table id="tablaList" class="table table-bordered table-striped table-condensed">
                   <thead>
                   <tr>
-                      <th>Nº</th>
-                      <th>Apellido Paterno</th>
-                      <th>Apellido Materno</th>
-                      <th>Nombre</th>
-                      <th>CI</th>
-                      <th>Fecha Nacimiento</th>
-                      <th>Edad</th>
-                      <th>Edad Tipo</th>
-                      <th>Cargo</th>
-                      <th>Acciones</th>
+                      <th style="text-align: center">Nº</th>
+                      <th style="text-align: center">Apellido Paterno</th>
+                      <th style="text-align: center">Apellido Materno</th>
+                      <th style="text-align: center">Nombre</th>
+                      <th style="text-align: center">Nombre<br/>Corto</th>
+                      <th style="text-align: center">Cedula<br/>Identidad</th>
+                      <th style="text-align: center">Fecha Nacimiento</th>
+                      <!--<th style="text-align: center">Edad</th>
+                      <th style="text-align: center">Edad Tipo</th>-->
+                      <th style="text-align: center">Cargo</th>
+                      <th style="text-align: center">Acciones</th>
                   </tr>
                   </thead>
                   <tbody>
                   <?PHP
-                  $sql   = "SELECT *";
-                  $sql  .= "FROM militante ORDER BY id DESC";
+                  $sql = "SELECT * FROM militante ORDER BY id DESC limit 5; ";
 
                   $cont = 1;
 
@@ -140,20 +140,36 @@
 
                       ?>
                       <tr id="tb<?=$row[0]?>">
-                          <td align="center"><?=$cont++;?></td>
+                          <!--<td align="center"><?=$cont++;?></td>-->
+                          <td align="center"><?=$row['id'];?></td>
                           <td align="center"><?=utf8_encode($row['paterno']);?></td>
-                          <td align="center"><?=$row['materno'];?></td>
-                          <td align="center"><?=$row['nombres'];?></td>
+                          <td align="center"><?=utf8_encode($row['materno']);?></td>
+                          <td align="center"><?=utf8_encode($row['nombres']);?></td>
+                          <td align="center"><?=utf8_encode($row['nom_corto']);?></td>
                           <td align="center"><?=$row['ci'];?></td>
                           <td align="center"><?=$row['fecha_nacimiento'];?></td>
-                          <td align="center"><?=$row['edad'];?></td>
-                          <td align="center"><?=$row['edad_tipo'];?></td>
-                          <td align="center"><?=$row['cargo'];?></td>
+                          <!--<td align="center"><?=$row['edad_tipo'];?></td>-->
+                          <td align="center"><?=utf8_encode($row['cargo']);?></td>
                           <td width="14%">
                               <div class="btn-group" style="width: 171px">
-                                  <a class="btn btn-primary" href="credencial.php?name=<?=$row['nombres'].' '.utf8_encode($row['paterno']).' '.$row['materno'];?>&ci=<?=$row['ci']?>&ca=<?=$row['cargo']?>" target="_blank" role="button">Ver Credencial</a>
+                                  <a class="btn btn-primary" href="credencial.php?name=<?=utf8_encode($row['nombres']).' '.utf8_encode($row['paterno']).' '.utf8_encode($row['materno']);?>&ci=<?=$row['ci']?>&ca=<?=utf8_encode($row['cargo'])?>" target="_blank" role="button">Ver Credencial</a>
                               </div>
 
+                              <div class="btn-group">
+                                  <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                  data-target="#dataUpdate"
+                                      data-id     ="<?=$row['id']?>"
+                                      data-name     ="<?=$row['nombres']?>"
+                                      data-namec    ="<?=$row['nom_corto']?>"
+                                      data-paterno  ="<?=$row['paterno']?>"
+                                      data-materno    ="<?=$row['materno']?>"
+                                      data-cargo    ="<?=$row['cargo']?>"
+                                      data-ci ="<?=$row['ci']?>"
+                                  >
+                                    <i class='fa fa-pencil-square-o '></i>
+                                    <span>Editar</span>
+                                  </button>
+                              </div>
                           </td>
                       </tr>
                       <?PHP
@@ -162,14 +178,15 @@
                   </tbody>
                   <tfoot>
                   <tr>
-                      <th>Nº</th>
+                      <th>ID</th>
                       <th>Apellido Paterno</th>
                       <th>Apellido Materno</th>
                       <th>Nombre</th>
+                      <th>Nombre<br/>Corto</th>
                       <th>CI</th>
                       <th>Fecha Nacimiento</th>
-                      <th>Edad</th>
-                      <th>Edad Tipo</th>
+                      <!--<th>Edad</th>
+                      <th>Edad Tipo</th>-->
                       <th>Cargo</th>
                       <th>Acciones</th>
                   </tr>
@@ -221,9 +238,9 @@
     <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
     <script type="text/javascript" src="../../assets/js/vendor/jquery.ui.widget.js"></script>
     <!-- The Templates plugin is included to render the upload/download listings -->
-    <script src="//blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>
+    <!--<script src="//blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>-->   <!-- cambio -->
     <!-- The Templates plugin is included to render the upload/download listings -->
-    <script src="//blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>
+    <!--<script src="//blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>-->   <!-- cambio -->
     <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
     <script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
     <!-- The Canvas to Blob plugin is included for image resizing functionality -->
@@ -306,7 +323,7 @@
 <?PHP
 
     include 'newProducto.php';
-
+    include 'editarMilitante.php';
 
   ?>
   </body>
